@@ -11,7 +11,41 @@ var methodOverride = require('method-override');
 var db = require('./config/db');
 
 var port = process.env.PORT || 8080; // set our port
-// mongoose.connect(db.url); // connect to our mongoDB database (commented out after you enter in your own credentials)
+
+mongoose.connect(db.url, function (err, res) { // connect to our mongoDB database (commented out after you enter in your own credentials)
+  if (err) {
+  	console.log ('ERROR connecting to: ' + db.url + '. ' + err);
+  } else {
+  	console.log ('Succeeded connected to: ' + db.url);
+  }
+});
+
+var personSchema = mongoose.Schema({
+    name: String
+})
+
+personSchema.methods.sayHi = function () {
+  var greeting = this.name
+    ? "Hi, I'm " + this.name
+    : "I don't have a name. Sad :("
+  console.log(greeting);
+}
+
+var Person = mongoose.model('Person', personSchema)
+
+var dave = new Person({ name: 'Dave' })
+console.log(dave.name) 
+
+dave.save(function (err, dave) {
+  if (err) return console.error('Failed to save ' + dave.name + ': ' + err);
+});
+
+Person.find(function (err, people) {
+  if (err) return console.error(err);
+  for(var i = 0; i < people.length; i++){
+  	people[i].sayHi();
+  }
+})
 
 // get all data/stuff of the body (POST) parameters
 app.use(bodyParser.json()); // parse application/json 
