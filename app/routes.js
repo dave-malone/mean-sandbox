@@ -7,17 +7,12 @@ module.exports = function(app) {
 	// handle things like api calls
 	// authentication routes
 
-	// frontend routes =========================================================
-	// route to handle all angular requests
-	app.get('/', function(req, res) {
-		res.sendfile('./public/src/index.html');
-	});
 
 	var router = express.Router(); 	// get an instance of the express Router
 
 	// test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 	router.get('/', function(req, res) {
-		res.json({ message: 'hooray! welcome to our api!' });	
+		res.json({ message: 'Currently, there is only one API, which is the Person API at /api/person. The Person API is a full CRUD API.' });	
 	});
 
 	// more routes for our API will happen here
@@ -28,6 +23,10 @@ module.exports = function(app) {
 
 		// create a person (accessed at POST http://localhost:8080/api/person)
 		.post(function(req, res) {
+			console.log('Attempting to create new person; req.body: ' + req.body);
+			console.log(JSON.stringify(req.body))
+			console.log('req.body.name: ' + req.body.name); 
+
 			var person = new Person(); 		// create a new instance of the Person model
 			person.name = req.body.name;  // set the person name (comes from the request)
 
@@ -101,4 +100,11 @@ module.exports = function(app) {
 	// REGISTER OUR ROUTES -------------------------------
 	// all of our routes will be prefixed with /api
 	app.use('/api', router);
+
+
+	// frontend routes =========================================================
+	// route to handle all angular requests
+	app.get('*', function(req, res) {
+		res.sendfile('./public/src/index.html');
+	});
 };

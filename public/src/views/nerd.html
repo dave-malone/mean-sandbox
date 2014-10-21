@@ -3,3 +3,36 @@
 
 	<p>{{ tagline }}</p>
 </div>
+<div>
+	<p>Showing off {{ people.length }} Nerds</p>
+
+	<!-- person LIST -->
+	<div id="person-list" class="row">
+		<div class="col-sm-4 col-sm-offset-4">
+
+			<!-- LOOP OVER THE personS IN $scope.people -->
+			<div class="checkbox" ng-repeat="person in people">
+				<label>
+					<input type="checkbox" ng-click="deletePerson(person._id)"> {{ person.name }}
+				</label>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- FORM TO CREATE personS -->
+	<div id="person-form" class="row">
+		<div class="col-sm-8 col-sm-offset-2">
+			<form>
+				<div class="form-group">
+
+					<!-- BIND THIS VALUE TO formData.name IN ANGULAR -->
+					<input type="text" class="form-control input-lg" placeholder="Enter Person's Name" ng-model="formData.name">
+				</div>
+
+				<!-- createperson() WILL CREATE NEW personS -->
+				<button type="submit" class="btn btn-primary btn-lg" ng-click="createPerson()">Add</button>
+			</form>
+		</div>
+	</div>
+</div>
