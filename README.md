@@ -3,6 +3,10 @@ forked from https://github.com/scotch-io/starter-node-angular
 
 This is a repo for a starter appliation for a Single Page MEAN Stack application. Just download and install and you have a good foundation for building application. 
 
+## Setup
+1. Install MongoDB: http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/
+1. Install NodeJS
+
 ## Installation
 1. Download the repo
 1. Install the grunt-cli: `npm install -g grunt-cli`
