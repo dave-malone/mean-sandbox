@@ -6,17 +6,29 @@ var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 
 // configuration ===========================================
+
+var dburl = ''
 	
+if(process.env.VCAP_SERVICES){
+	console.log('process.env.VCAP_SERVICES IS set'); 
+	var vcap_services = JSON.parse(process.env.VCAP_SERVICES)
+	dburl = vcap_services.mongolab[0].credentials.uri
+}else{
+	console.log('process.env.VCAP_SERVICES NOT set');
+	var db = require('./config/db');
+	dburl = db.url
+}
+
 // config files
-var db = require('./config/db');
 
-var port = process.env.PORT || 8080; // set our port
 
-mongoose.connect(db.url, function (err, res) { // connect to our mongoDB database (commented out after you enter in your own credentials)
+var port = process.env.VCAP_APP_PORT || process.env.PORT || 8080; // set our port
+
+mongoose.connect(dburl, function (err, res) { // connect to our mongoDB database (commented out after you enter in your own credentials)
   if (err) {
-  	console.log ('ERROR connecting to: ' + db.url + '. ' + err);
+  	console.log ('ERROR connecting to: ' + dburl + '. ' + err);
   } else {
-  	console.log ('Succeeded connected to: ' + db.url);
+  	console.log ('Succeeded connected to: ' + dburl);
   }
 });
 
