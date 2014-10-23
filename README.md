@@ -3,7 +3,7 @@ forked from https://github.com/scotch-io/starter-node-angular
 
 This is a repo for a starter appliation for a Single Page MEAN Stack application. Just download and install and you have a good foundation for building application. This application has been configured for use with Pivotal Cloud Foundry.
 
-## Setup
+## Development Environment Prereqs
 1. Install MongoDB: http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/
 1. Install NodeJS
 
@@ -17,6 +17,10 @@ This is a repo for a starter appliation for a Single Page MEAN Stack application
 1. View in browser at http://localhost:8080
 
 Use this starter kit to build any MEAN stack application you like.
+
+## Deploy
+1. If deploying to Cloud Foundry, ensure that an instance of mongodb is bound to this application. This app assumes that a service is available via the VCAP_SERVICES environment variable, under an instance named "mongolab". This can be changed in server.js
+1. When running locally, this app requires that mongodb is running and accessible using the url string in config/db.js
 
 ## TODO
 1. minification is not working at this time; need to make js files "safe" for minification
