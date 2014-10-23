@@ -1,6 +1,6 @@
 ---
 applications:
-- name: starter-node-angular
+- name: mean-sandbox
   command: node server.js
   memory: 128M
-  host: mean-demo-app
+  host: mean-sandbox
