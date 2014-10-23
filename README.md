@@ -1,7 +1,6 @@
-# MEAN Stack Single Page Application Starter 
-forked from https://github.com/scotch-io/starter-node-angular
+# A sample MEAN stack application
 
-This is a repo for a starter appliation for a Single Page MEAN Stack application. Just download and install and you have a good foundation for building application. This application has been configured for use with Pivotal Cloud Foundry.
+This repo was forked from the [MEAN starter app](https://github.com/scotch-io/starter-node-angular) repo, and has been modified to explore libraries like Grunt, Mocha, and for deployment to Pivotal Cloud Foundry. Really it's just a sandbox for me to learn how to develop MEAN stack applications. 
 
 ## Development Environment Prereqs
 1. Install MongoDB: http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/
