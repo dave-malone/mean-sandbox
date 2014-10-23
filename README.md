@@ -20,3 +20,5 @@ Use this starter kit to build any MEAN stack application you like.
 
 ## TODO
 1. minification is not working at this time; need to make js files "safe" for minification
+1. add actual unit tests in Mocha
+1. integrate cfenv library into codebase (https://github.com/cloudfoundry-community/node-cfenv)
