@@ -3,4 +3,3 @@ applications:
 - name: mean-sandbox
   command: node server.js
   memory: 128M
-  host: mean-sandbox
